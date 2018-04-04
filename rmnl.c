@@ -13,10 +13,10 @@ int main(int argc, char *argv[])
 	nch = nfiles = 0;
 
 	if (argc == 1)
-		printf("Usage:  %s [filename]...\n", argv[0]);	// display usage information
+		printf("Usage:  %s [filename]...\n", argv[0]);		// display usage information
 	else
 	{
-		for (i = 1; i < argc; i++)			// for every command line argument
+		for (i = 1; i < argc; i++)					// for every command line argument
 		{
 			printf("\nProceeding to file \"%s\"...\n", argv[i]);	// state source file
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 				exit(EXIT_FAILURE);
 			}
 			fseek(fpsrc, 0L, SEEK_END);
-			fsize = ftell(fpsrc);		// find size of source file
+			fsize = ftell(fpsrc);			// find size of source file
 			rewind(fpsrc);
 
 			slen = strlen(argv[i]) + 5;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 			fseek(fpdest, 0L, SEEK_SET);		
 
 			printf("Writing to \"%s\"...\n", fname);
-			for (j = 1; j <= fsize; j++)		// for each byte in source file
+			for (j = 1; j <= fsize; j++)			// for each byte in source file
 			{
 				if ((ch = getc(fpsrc)) == '\n')		// if source character is newline, ignore
 				{
@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
 				} else					// else add source character to destination file
 				{
 					putc(ch, fpdest);
-					if (!isspace(ch))	// if source character is not whitespace
-						nch++;		// count character
+					if (!isspace(ch))		// if source character is not whitespace
+						nch++;			// count character
 					if (ferror(fpdest))
 					{
 						printf("Error writing to \"%s\" at byte %d!\n", fname, j);
